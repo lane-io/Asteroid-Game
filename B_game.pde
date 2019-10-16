@@ -1,14 +1,19 @@
 void game() {
   background(0);
 
-  int i = 0;
-  while (i < myGameObject.size()) {
-    GameObject bullet = myGameObject.get(i);
-    bullet.show();
-    bullet.act();
-    i++;
+  myShip.show();
+  myShip.act();
 
-    myShip.show();
-    myShip.act();
+
+  int i = 0;
+  while (i < objects.size()) {
+    GameObject myObj = objects.get(i);
+    myObj.show();
+    myObj.act();
+    if (myObj.lives == 0) {
+      objects.remove(i);
+    } else {
+      i++;
+    }
   }
 }

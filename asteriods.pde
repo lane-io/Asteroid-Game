@@ -1,3 +1,11 @@
+//criteria
+//1. mode frameowrk
+//2. points
+//3. sfx
+//4. particle explosions
+//5. ships dies at asteroid collision
+//6. ufo randomly appears
+
 int mode;
 
 final int intro = 0;
@@ -7,18 +15,21 @@ final int gameover = 2;
 boolean upkey, downkey, leftkey, rightkey, spacekey;
 PImage shipimg;
 Ship myShip;
-ArrayList<GameObject> myGameObject;
+ArrayList<GameObject> objects;
 
 void setup () {
   size (500, 500);
   mode = 0;
-  //background(255);
 
   shipimg = loadImage ("shark.gif");
-  imageMode (CENTER);
 
   myShip = new Ship ();
-  myGameObject = new ArrayList<GameObject>();
+  imageMode (CENTER);
+  objects = new ArrayList<GameObject>();
+
+  objects.add (new Asteroid());
+  objects.add (new Asteroid());
+  objects.add (new Asteroid());
 }
 
 void draw () {

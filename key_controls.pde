@@ -17,7 +17,7 @@ void keyReleased () {
 void mouseReleased() {
   if (mode == intro) {
     mode = game;
-  } else if (mode == game){
+  } else if (mode == game) {
     mode = intro;
   }
 }

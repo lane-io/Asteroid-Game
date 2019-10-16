@@ -1,21 +1,18 @@
 class Ship extends GameObject {
 
-  //1. instance variables
-  // only apply to one class, nonglobal
-
   PVector direction;
-
-  //2. constructors
+  int shotTimer;
+  int threshold;
 
   Ship () {
     lives = 3;
+    shotTimer = 0;
+    threshold = 30;
     location = new PVector (width/2, height/2);
     velocity = new PVector (0, 0);
     direction = new PVector (0, -0.1);
   }
 
-  //3. behavior functions
-  // defines what the class can do
 
   void show () {
     pushMatrix ();
@@ -28,18 +25,19 @@ class Ship extends GameObject {
   }
 
   void act () {
-    location.add (velocity);
+
+    super.act();
+
+    shotTimer++;
+
+    if (spacekey && shotTimer >= threshold) {
+      objects.add (new Bullet());
+      shotTimer = 0;
+    }
 
     if (upkey) velocity.add(direction);
     if (downkey) velocity.sub(direction);
     if (leftkey) direction.rotate(-radians(2));
     if (rightkey) direction.rotate(radians(2));
-
-    if (location.x < -20) location.x = width+20;
-    if (location.y < -20) location.y = height+20;
-    if (location.x > width+20) location.x = -20;
-    if (location.y > height+20) location.y = -20;
-
-    if (spacekey) myGameObject.add (new Bullet());
   }
 }
