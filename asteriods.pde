@@ -1,10 +1,14 @@
 //criteria
-//1. mode frameowrk
-//2. points
+//1. asteroid + ship collisions
+//2. points + lives
 //3. sfx
 //4. particle explosions
-//5. ships dies at asteroid collision
 //6. ufo randomly appears
+//  a. ufo bullet
+//  b. ufo collisions
+//  c. behavior
+//    i. spawns randomly on edge
+//    ii. goes through to other side
 
 int mode;
 
@@ -32,7 +36,7 @@ void setup () {
   objects.add (new Asteroid());
 }
 
-void draw () {
+void draw () { 
   if (mode == 0) {
     intro();
   } else if (mode == 1) {

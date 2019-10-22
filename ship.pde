@@ -5,7 +5,8 @@ class Ship extends GameObject {
   int threshold;
 
   Ship () {
-    lives = 3;
+    score = 0;
+    lives = 100;
     shotTimer = 0;
     threshold = 30;
     location = new PVector (width/2, height/2);
@@ -27,6 +28,25 @@ class Ship extends GameObject {
   void act () {
 
     super.act();
+    velocity.setMag( velocity.mag() * 0.95);
+
+    int i = 0;
+    while (i < objects.size()) {
+      GameObject myObj = objects.get(i);
+      if (myObj instanceof Asteroid) {
+        if (dist(myObj.location.x, myObj.location.y, location.x, location.y) < size/2 + myObj.size/2) {
+          myObj.lives = myObj.lives - 1;
+          lives = lives - 1;
+          location.x = width/2;
+          location.y = height/2;
+          if (myObj.size > 15) {
+            objects.add(new Asteroid (myObj.size/2, location.x, location.y));
+            objects.add(new Asteroid (myObj.size/2, location.x, location.y));
+          }
+        }
+      }
+      i++;
+    }
 
     shotTimer++;
 
@@ -34,7 +54,7 @@ class Ship extends GameObject {
       objects.add (new Bullet());
       shotTimer = 0;
     }
-
+    
     if (upkey) velocity.add(direction);
     if (downkey) velocity.sub(direction);
     if (leftkey) direction.rotate(-radians(2));
