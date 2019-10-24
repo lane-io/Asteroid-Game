@@ -37,6 +37,13 @@ class Asteroid extends GameObject {
           myObj.lives = 0;
           myShip.score = score + 1;
           lives = 0;
+          
+          objects.add(new Particle(myObj.location.x, myObj.location.y));
+          objects.add(new Particle(myObj.location.x, myObj.location.y));
+          objects.add(new Particle(myObj.location.x, myObj.location.y));
+          objects.add(new Particle(myObj.location.x, myObj.location.y));
+          objects.add(new Particle(myObj.location.x, myObj.location.y));
+          
           if (size > 15) {
             objects.add(new Asteroid (size/2, location.x, location.y));
             objects.add(new Asteroid (size/2, location.x, location.y));

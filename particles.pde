@@ -1,5 +1,8 @@
 class Particle extends GameObject {
 
+  float size;
+  float g;
+
   Particle() {
     lives = 1;
     alpha = 255;
@@ -7,19 +10,30 @@ class Particle extends GameObject {
     velocity = new PVector (myShip.direction.x, myShip.direction.y);
   }
 
-  void show() {
-    
-    fill(255, alpha);
+  Particle(float x, float y) {
+    lives = 1;
+    alpha = 255;
+    size = random (1, 7);
+    location = new PVector (x, y);
+    velocity = new PVector (0, 1);
+    velocity.setMag ((10 - size)*0.2);
+    velocity.rotate (random (0, TWO_PI));
+  }
+
+  void show() { 
+
+    g = 255 - (size*30);
+
+    fill(245, g, 53, alpha);
     noStroke();
-    ellipse(3, 3, location.x, location.y);
+    ellipse(location.x, location.y, size, size );
   }
 
   void act() {
     super.act();
 
-    location.x = location.x + 10;
-    location.y = location.y + 10;
+    alpha = alpha - ((10 - size)*0.6);
 
-    alpha = alpha - 10;
+    if (location.x <= -20 || location.y <= -20 || location.x >= width+20 || location.y >= height+20) lives = 0;
   }
 }

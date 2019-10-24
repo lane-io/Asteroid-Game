@@ -3,10 +3,9 @@ void game() {
 
   textAlign(CENTER);
   textSize(20);
+  stroke(255);
   text("LIVES : " + myShip.lives, width/2, (height/2) - 50);
   text("SCORE : " + myShip.score, width/2, (height/2) + 50);
-
-println(myShip.lives);
 
   myShip.show();
   myShip.act();
@@ -18,7 +17,6 @@ println(myShip.lives);
     myObj.act();
     if (myObj.lives == 0 || myObj.alpha <= 0) {
       objects.remove(i);
-      objects.add(new Particle());
     } else {
       i++;
     }
