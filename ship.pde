@@ -3,6 +3,7 @@ class Ship extends GameObject {
   PVector direction;
   int shotTimer;
   int threshold;
+  int score;
 
   Ship () {
     score = 0;

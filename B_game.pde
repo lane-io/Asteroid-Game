@@ -3,7 +3,7 @@ void game() {
 
   textAlign(CENTER);
   textSize(20);
-  stroke(255);
+  fill(255);
   text("LIVES : " + myShip.lives, width/2, (height/2) - 50);
   text("SCORE : " + myShip.score, width/2, (height/2) + 50);
 
@@ -28,7 +28,7 @@ void game() {
     gameover();
   }
 
-  if (myShip.score >= 24) {
-    gameover();
-  }
+  //if (Asteroids == 0) {
+  //  mode = gameover;
+  //}
 }

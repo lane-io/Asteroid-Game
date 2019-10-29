@@ -1,7 +1,6 @@
 abstract class GameObject {
 
   int lives;
-  int score;
   int size;
   float alpha;
   PVector location;

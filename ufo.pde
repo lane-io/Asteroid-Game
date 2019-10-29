@@ -38,7 +38,7 @@ class Ufo extends GameObject {
         } else if (myObj instanceof Bullet) {
           if (dist(myObj.location.x, myObj.location.y, location.x, location.y) < size/2 + myObj.size/2) {
             myObj.lives = 0;
-            myShip.score = score + 1;
+            myShip.score++;
             lives = 0;
           }
         }
