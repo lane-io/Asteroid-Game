@@ -52,7 +52,7 @@ class Ship extends GameObject {
     shotTimer++;
 
     if (spacekey && shotTimer >= threshold) {
-      objects.add (new Bullet());
+      objects.add (new goodBullet());
       shotTimer = 0;
     }
     

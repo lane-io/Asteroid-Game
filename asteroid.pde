@@ -32,7 +32,7 @@ class Asteroid extends GameObject {
     int i = 0;
     while (i < objects.size()) {
       GameObject myObj = objects.get(i);
-      if (myObj instanceof Bullet) {
+      if (myObj instanceof goodBullet) {
         if (dist(myObj.location.x, myObj.location.y, location.x, location.y) < size/2 + myObj.size/2) {
           myObj.lives = 0;
           myShip.score++;

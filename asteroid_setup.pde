@@ -13,6 +13,8 @@ final int intro = 0;
 final int game = 1;
 final int gameover = 2;
 
+int highscore = 0;
+
 boolean upkey, downkey, leftkey, rightkey, spacekey;
 PImage shipimg;
 Ship myShip;

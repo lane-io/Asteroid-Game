@@ -9,6 +9,10 @@ void game() {
 
   myShip.show();
   myShip.act();
+  
+  if (frameCount % 100 == 0) {
+    objects.add (new ufo());
+  }
 
   int i = 0;
   while (i < objects.size()) {
@@ -22,13 +26,11 @@ void game() {
     }
   }
 
-
-
   if (myShip.lives <= 0) {
     gameover();
   }
 
-  //if (Asteroids == 0) {
-  //  mode = gameover;
-  //}
+  if (myShip.score == 45) {
+    mode = gameover;
+  }
 }
