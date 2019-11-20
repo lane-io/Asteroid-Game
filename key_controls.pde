@@ -15,8 +15,14 @@ void keyReleased () {
 }
 
 void mouseReleased() {
-  if (mode == intro && mouseX > (width/2 - 40) && mouseX < (width/2 + 40) && mouseY > (height/2 - 15) && mouseY < (height/2 + 15)) {
+  if (mode == intro && mouseX > (width/2 - 50) && mouseX < (width/2 + 50) && mouseY > (height/2 - 40) && mouseY < (height/2 + 20)) {
     mode = game;
+  } else if (mode == intro && mouseX > (width/2 - 50) && mouseX < (width/2 + 50) && mouseY > (height/2 + 20) && mouseY < (height/2 + 70)) {
+    mode = rules;
+  } else if (mode == rules) {
+    mode = intro;
+  } else if (mode == game) {
+    mode = gameover;
   } else if (mode == gameover) {
     mode = intro;
   }

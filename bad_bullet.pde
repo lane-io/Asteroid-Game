@@ -3,14 +3,14 @@ class badBullet extends GameObject {
   badBullet() {
     lives = 1;
     alpha = 255;
-    //location = new PVector (ufo.location.x, ufo.location.y);
-    velocity = new PVector (myShip.direction.x, myShip.direction.y);
+    location = new PVector (UFO.location.x, UFO.location.y);
+    velocity = new PVector (myShip.location.x, myShip.location.y);
     velocity.setMag(-7);
   }
 
   void show() {
     noStroke();
-    fill(82, 209, 208);
+    fill(232, 59, 59);
     ellipse(location.x, location.y, 5, 5);
   }
 

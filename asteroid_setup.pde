@@ -10,14 +10,16 @@
 int mode;
 
 final int intro = 0;
-final int game = 1;
-final int gameover = 2;
+final int rules = 1;
+final int game = 2;
+final int gameover = 3;
 
 int highscore = 0;
 
 boolean upkey, downkey, leftkey, rightkey, spacekey;
 PImage shipimg;
 Ship myShip;
+ufo UFO;
 ArrayList<GameObject> objects;
 
 void setup () {
@@ -30,18 +32,26 @@ void setup () {
 
   myShip = new Ship ();
   imageMode (CENTER);
+  
+  UFO = new ufo ();
 
   objects.add (new Asteroid());
   objects.add (new Asteroid());
   objects.add (new Asteroid());
+
+  
+  
+  objects.add (new ufo());
 }
 
 void draw () { 
   if (mode == 0) {
     intro();
   } else if (mode == 1) {
-    game();
+    rules();
   } else if (mode == 2) {
+    game();
+  } else if (mode == 3) {
     gameover();
   }
 }

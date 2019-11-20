@@ -10,9 +10,8 @@ void game() {
   myShip.show();
   myShip.act();
   
-  if (frameCount % 100 == 0) {
-    objects.add (new ufo());
-  }
+  UFO.show();
+  UFO.act();
 
   int i = 0;
   while (i < objects.size()) {

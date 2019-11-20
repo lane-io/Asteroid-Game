@@ -6,13 +6,26 @@ class ufo extends GameObject {
   float x, y;
 
   ufo () {
-    alpha = 2;
+    alpha = 255;
     shotTimer = 0;
     threshold = 30;
     location = new PVector (random(0, width), random(0, height));
     velocity = new PVector (0, 1);
+    velocity.setMag (random (0, 2));
     velocity.rotate (random (0, TWO_PI));
     size = 20;
+  }
+
+  ufo (int s, float x, float y) {
+    lives = 1;
+    alpha = 255;
+    shotTimer = 0;
+    threshold = 30;
+    location = new PVector (x, y);
+    velocity = new PVector (0, 1);
+    velocity.setMag (random (0, 2));
+    velocity.rotate (random (0, TWO_PI));
+    size = s;
   }
 
 
@@ -20,10 +33,10 @@ class ufo extends GameObject {
     pushMatrix ();
 
     translate(location.x, location.y);
-    fill (255);
+    fill (232, 59, 59);
     ellipse(location.x, location.y, size, size);
 
-    println (location.x, location.y);
+    println(location.x, location.y);
 
     popMatrix ();
   }
@@ -31,6 +44,11 @@ class ufo extends GameObject {
   void act () {
 
     super.act();
+
+    if (location.x < -500) location.x = width + 500;
+    if (location.y < -500) location.y = height + 500;
+    if (location.x > width + 500) location.x = -500;
+    if (location.y > height + 500) location.y = -500;
 
     int i = 0;
     while (i < objects.size()) {
@@ -52,7 +70,7 @@ class ufo extends GameObject {
     shotTimer++;
 
     if (shotTimer >= threshold) {
-      objects.add (new badBullet(location.x, location.y));
+      objects.add (new badBullet());
       shotTimer = 0;
     }
   }

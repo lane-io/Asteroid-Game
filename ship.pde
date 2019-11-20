@@ -7,7 +7,7 @@ class Ship extends GameObject {
 
   Ship () {
     score = 0;
-    lives = 100;
+    lives = 5;
     shotTimer = 0;
     threshold = 30;
     location = new PVector (width/2, height/2);
@@ -36,7 +36,7 @@ class Ship extends GameObject {
       GameObject myObj = objects.get(i);
       if (myObj instanceof Asteroid) {
         if (dist(myObj.location.x, myObj.location.y, location.x, location.y) < size/2 + myObj.size/2) {
-          myObj.lives = myObj.lives - 1;
+          myObj.lives = 0;
           lives = lives - 1;
           location.x = width/2;
           location.y = height/2;
@@ -45,7 +45,12 @@ class Ship extends GameObject {
             objects.add(new Asteroid (myObj.size/2, location.x, location.y));
           }
         }
-      }
+      } else if (myObj instanceof badBullet) {
+        if (dist(myObj.location.x, myObj.location.y, location.x, location.y) < size/2 + myObj.size/2) {
+          myObj.lives = 0;
+          lives = lives - 1;
+          }
+        }
       i++;
     }
 
@@ -55,7 +60,7 @@ class Ship extends GameObject {
       objects.add (new goodBullet());
       shotTimer = 0;
     }
-    
+
     if (upkey) velocity.add(direction);
     if (downkey) velocity.sub(direction);
     if (leftkey) direction.rotate(-radians(2));

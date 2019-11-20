@@ -1,7 +1,7 @@
 class Asteroid extends GameObject {
 
   Asteroid() {
-    lives = 3;
+    lives = 1;
     size = 70;
     alpha = 255;
     location = new PVector (random(0, width), random(0, height));
@@ -37,13 +37,13 @@ class Asteroid extends GameObject {
           myObj.lives = 0;
           myShip.score++;
           lives = 0;
-          
+
           objects.add(new Particle(myObj.location.x, myObj.location.y));
           objects.add(new Particle(myObj.location.x, myObj.location.y));
           objects.add(new Particle(myObj.location.x, myObj.location.y));
           objects.add(new Particle(myObj.location.x, myObj.location.y));
           objects.add(new Particle(myObj.location.x, myObj.location.y));
-          
+
           if (size > 15) {
             objects.add(new Asteroid (size/2, location.x, location.y));
             objects.add(new Asteroid (size/2, location.x, location.y));
